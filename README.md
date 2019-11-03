@@ -1,6 +1,7 @@
 # .configfiles
 The bare repository for config files.
 This bare repository was created for the cross saving of linux and unix configuration dot files.
+The following set of instructions creates a bare git repository for dotfiles that target a `.cfg` folder in the $HOME directory path. `.cfg` can be changed to any folder.
 
 ## How to start from scratch
 First make sure github SSH is set up.
