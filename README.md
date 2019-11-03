@@ -6,7 +6,7 @@ This bare repository was created for the cross saving of linux and unix configur
 First make sure github SSH is set up.
 Then setup a bare repository.
 
-(How to store dotfiles)[https://www.atlassian.com/git/tutorials/dotfiles]
+[How to store dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)
 
 If you're running bash, the following is how to start:
 
