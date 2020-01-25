@@ -14,3 +14,17 @@ else
   mkdir /mnt/c/WSL\ Projects
   cd ~ && ln -s /mnt/c/WSL\ Projects
 fi
+
+# Install vim-plug for vim and neovim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    
+# Get latest dotfiles
+curl -fLo ~/.bashrc \
+    https://raw.githubusercontent.com/IsaacPang/.configfiles/master/.bashrc
+curl -fLo ~/.vimrc \
+    https://raw.githubusercontent.com/IsaacPang/.configfiles/master/.vimrc
+curl -fLo ~/.config/nvim/init.vim --create-dirs \
+    https://raw.githubusercontent.com/IsaacPang/.configfiles/master/.config/nvim/init.vim
