@@ -46,3 +46,32 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 set tabstop=4 shiftwidth=4 expandtab
+
+" Key mappings
+" --------------------------------------------
+
+nnoremap k gk
+nnoremap j gj
+vnoremap k gk
+vnoremap j gj
+
+nnoremap Y y$
+
+" Switch buffers
+nnoremap <silent>H :silent bp<CR>
+nnoremap <silent>L :silent bn<CR>
+
+" Clear search
+nnoremap <silent> <leader>k :noh<cr>
+
+vnoremap < <gv
+vnoremap > >gv
+
+inoremap kj <esc>
+cnoremap kj <C-C>
+
+" Switch between splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
