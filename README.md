@@ -80,3 +80,7 @@ Dotfiles can be then updated as follows
     config add .bashrc
     config commit -m "Add bashrc"
     config push
+
+## Setting up WSL to use windows clipboard
+A windows X server is required, along with vim with access to clipboard.
+Refer to https://github.com/Microsoft/WSL/issues/892#issuecomment-275873108
