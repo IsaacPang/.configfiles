@@ -81,6 +81,24 @@ Dotfiles can be then updated as follows
     config commit -m "Add bashrc"
     config push
 
-## Setting up WSL to use windows clipboard
-A windows X server is required, along with vim with access to clipboard.
-Refer to https://github.com/Microsoft/WSL/issues/892#issuecomment-275873108
+## Setting up WSL
+Windows Subsystem for Linux is absolutely amazing, and I assert is the most powerful development tool for Windows.
+
+### Using wsl_setup.sh
+Simple type `bash wsl_setup.sh` in a bash terminal after downloading my `wsl_setup.sh`
+
+### Clipboard issues with vim
+Using vim or nvim is very good for productivity in general as long as the setup is completed carefully. Since Linux is a subsytem, it should be carefully administered where a windows X server is required, along with vim with access to Windows' clipboard.
+Refer to [this thread](https://github.com/Microsoft/WSL/issues/892#issuecomment-275873108).
+In short:
+1. Install [VcXsrv](https://sourceforge.net/projects/vcxsrv/)
+2. If it starts after installing, stop it
+3. Start it using XLaunch (search in the start menu), go with all the defaults (ensure the clipboard options are checked)
+4. At the end, save the configuration to a file (use that to start it from now on)
+5. Put `export DISPLAY=localhost:0.0` in your `.bashrc` in bash for Windows (and run the command in any open bash windows). The reason I explicitly say localhost is that this makes SSH X forwarding work, see below.
+6. Ensure vim is installed using clipboard support. `vim --version | grep clipboard` should say `+clipboard`, not `-clipboard`. Also if you run the ex command `:echo has('clipboard')` in `vim` and it says `0` it does not have clipboard support compiled in. If you don't have clipboard support, install the `vim-gtk` package (`apt-get install vim-gtk`).
+7. Put the `config` file into Startup folder to ensure an X server is launched on startup
+8. Yanking from vim now should have access to `"*` and `"+` which also sends the yanks straight to the Windows system clipboard.
+
+### wsltty
+The default ubuntu terminal is well and good but fonts and graphics do not appear very well. The alternative is [wsltty](https://github.com/mintty/wsltty). This is just preference.
