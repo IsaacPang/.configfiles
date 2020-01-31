@@ -200,5 +200,9 @@ set -o vi
 # fzf inits
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# X11 config for WSL
+DISPLAY=localhost:0.0
+export DISPLAY
+
 # config alias for bare repo for config files
 alias config='/usr/bin/git --git-dir=/home/isaac/.configfiles/ --work-tree=/home/isaac'
