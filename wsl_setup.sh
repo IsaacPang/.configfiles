@@ -28,3 +28,6 @@ curl -fLo ~/.vimrc \
     https://raw.githubusercontent.com/IsaacPang/.configfiles/master/.vimrc
 curl -fLo ~/.config/nvim/init.vim --create-dirs \
     https://raw.githubusercontent.com/IsaacPang/.configfiles/master/.config/nvim/init.vim
+
+# Install required libraries for spyder
+sudo apt-get install qtbase5-dev -y
