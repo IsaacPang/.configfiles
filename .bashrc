@@ -1,3 +1,4 @@
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -72,35 +73,13 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -alsh --group-directories-first --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -131,6 +110,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# define colours for PS1
 green="\e[01;92m" # bold bright green
 blue="\e[01;94m" # bold bright blue
 yellow="\e[01;93m" # bold bright yellow
@@ -140,17 +120,25 @@ default="\e[m" # default system color
 # source ~/git-prompt.sh
 # export PROMPT_COMMAND='__posh_git_ps1 "\\[\[\e[01;93m\]\u@\[\e[01;92m\]\W" " \[\e[01;93m\]\n\$\[\e[0m\] ";'$PROMPT_COMMAND
 
+# Disable <C-s> and <C-q> for terminal scroll lock
+stty -ixon
+
 parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 PS1="\[$yellow\](\$CONDA_DEFAULT_ENV)\[$magenta\]\$(parse_git_branch) \[$green\]\u\[$default\]@\[$blue\]\W\[$yellow\]\n\\$\[$default\] "
 
-alias ..="cd .."
-alias fhere="find . -name "
-alias mkdir="mkdir -pv"
-alias vim="nvim"
+# display to X11 for WSL
+export DISPLAY=localhost:0.0
 
+# export PATH for nvim v0.4.3 (from source)
+export  PATH=/home/isaac/squashfs-root/usr/bin:$PATH
+
+# enable vi mode in shell
+set -o vi
+
+## --------------------FUNCTIONS--------------------
 # command to create directory and move to it
 mcd () {
 	mkdir -p $1
@@ -193,16 +181,12 @@ function extract {
     done
 fi
 }
-
-# enable vi mode in shell
-set -o vi
+## --------------------END--------------------
 
 # fzf inits
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# X11 config for WSL
-DISPLAY=:0.0
-export DISPLAY
+# ssh agent
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
 
-# config alias for bare repo for config files
-alias config='/usr/bin/git --git-dir=/home/isaac/.configfiles/ --work-tree=/home/isaac'
