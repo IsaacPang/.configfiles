@@ -108,5 +108,5 @@ Set up Windows Chrome browser in path
 - Set up browser from `~/.bashrc` using `export BROWSER="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"`
 - Set up `~/.bash_aliases` with `alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"`
 - Generate, if not available, a jupyter notebook config file in terminal `jupyter notebook --generate-config`
-- Naviage to the `.jupyter` directory and add the following to `.jupyter_config.py`: `c.NotebookApp.browser = u'/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe %s'`
+- Naviage to the `.jupyter` directory and add the following to `jupyter_notebook_config.py`: `c.NotebookApp.browser = u'/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe %s'`
 - Then add `c.NotebookApp.use_redirect_file = False`
