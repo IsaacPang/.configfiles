@@ -181,6 +181,14 @@ function extract {
     done
 fi
 }
+
+# setting up bash window title
+function set-title() {
+    TITLE=$*
+    printf "\033]2;${TITLE}\a"
+    echo "Terminal title changed to ${TITLE}"
+}
+
 ## --------------------END--------------------
 
 # fzf inits
@@ -190,3 +198,6 @@ fi
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 
+# setting up display to use Xserver
+export DISPLAY=localhost:0.0
+export BROWSER='/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe'
