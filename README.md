@@ -102,3 +102,10 @@ In short:
 
 ### wsltty
 The default ubuntu terminal is well and good but fonts and graphics do not appear very well. The alternative is [wsltty](https://github.com/mintty/wsltty). This is just preference.
+
+### Jupyter Notebook in WSL
+Set up Windows Chrome browser in path
+- Set up browser from `~/.bashrc` using `export BROWSER="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"`
+- Set up `~/.bash_aliases` with `alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"`
+- Generate, if not available, a jupyter notebook config file in terminal `jupyter notebook --generate-config`
+- Naviage to the `.jupyter` directory and add the line `c.NotebookApp.browser = u'/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe %s'`
