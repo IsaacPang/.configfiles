@@ -1,4 +1,8 @@
 channels:
+  - conda-forge
   - defaults
 ssl_verify: true
 changeps1: False
+# proxy_servers:
+#   http: http://proxyserver.com:8080
+#   https: https://proxyserver.com:8080
