@@ -92,6 +92,8 @@ set showcmd
 set number
 set relativenumber
 
+set scrolloff=10
+
 " Key mappings
 " --------------------------------------------
 
